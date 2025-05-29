@@ -1,0 +1,1 @@
+If I make changes to the models.py file under the learning_logs folder I then have to go into the ll_project folder and tell the settings.py folder to look for that. Don't forget it!

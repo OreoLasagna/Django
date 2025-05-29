@@ -1,0 +1,45 @@
+Do this in a standalone terminal. NOT IN VS CODE
+Stuff in parenthese are names you can just assign however you want
+
+Creating Virtual Environment:
+py -m venv (ll_env)
+
+
+Activating Virtual Environment: -After you've navigated to the proper folder directory-
+ll_env\Scripts\activate
+
+When it works you should see a little (ll_env) to the side of the Command Prompt active line
+
+
+Deactivating the Virtual Environment:
+deactivate
+
+
+Viewing the Project and turning it out:
+py manage.py runserver
+
+Local Host is here - http://127.0.0.1:8000/
+Slap that into your URL of a browser of your choice
+
+>Also. Good idea to have one terminal in the background just have the Project running.
+>Then make new terminals to do everything else
+
+
+Turning off the Project:
+Ctrl + C
+
+
+Creating a new app:
+py manage.py startapp (learning_logs)
+
+
+Creating/Modifying the Database: -Remember the directory where you have direct access to manage.py-
+py manage.py migrate
+
+
+
+Updating a Database to include a specific app:
+py manage.py makemigrations (learning_logs)
+
+Here we are saying look at the learning_logs folder and grab any changes stuffed into models 
+Then to publish it to the database you then run the py manage.py migrate call again to commit it to the DB
