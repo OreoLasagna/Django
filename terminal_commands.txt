@@ -15,7 +15,7 @@ Deactivating the Virtual Environment:
 deactivate
 
 
-Viewing the Project and turning it out:
+Viewing the Project and turning it out after you've enabled the virtual environment:
 py manage.py runserver
 
 Local Host is here - http://127.0.0.1:8000/
@@ -43,3 +43,36 @@ py manage.py makemigrations (learning_logs)
 
 Here we are saying look at the learning_logs folder and grab any changes stuffed into models 
 Then to publish it to the database you then run the py manage.py migrate call again to commit it to the DB
+
+
+
+Creating a super/admin user:
+py manage.py createsuperuser
+
+You'll be prompted to add a Username. And you HAVE to add a password.
+For this we named our username 'll_admin'
+PW is Test123!
+
+What's confusing is that when you enter in the PW in the terminal it will not actually show it as you type it out
+
+
+
+Accessing the Admin Site:
+http://127.0.0.1:8000/admin/
+
+ll_admin/Test123!
+
+
+
+Creating a shell - Page 386:
+py manage.py shell
+
+To exit a shell session hit CTRL + Z then Enter
+
+Then when we want to test something in the shell...
+from (learing_logs).models import Topic
+Topic.objects.all()
+
+
+
+Reference age 387 for how to use foreign keys to retrieve data across linked Classes
