@@ -10,6 +10,16 @@ ll_env\Scripts\activate
 When it works you should see a little (ll_env) to the side of the Command Prompt active line
 
 
+After creating your virtual environment for the first time you have to install Django
+pip install --upgrade pip
+pip install django
+
+
+Thennnnnn you need to create the project in Django. The extra period at the end is important it makes a manage.py file at the folder level
+django-admin startproject (PROJECT NAME GOES HERE - EX: ll_project) .
+
+
+
 Deactivating the Virtual Environment:
 deactivate
 
