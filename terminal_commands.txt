@@ -1,8 +1,7 @@
 Do this in a standalone terminal. NOT IN VS CODE
-Stuff in parenthese are names you can just assign however you want
 
 Creating Virtual Environment:
-py -m venv (ll_env)
+py -m venv ll_env
 
 
 Activating Virtual Environment: -After you've navigated to the proper folder directory-
@@ -30,7 +29,7 @@ Ctrl + C
 
 
 Creating a new app:
-py manage.py startapp (learning_logs)
+py manage.py startapp learning_logs
 
 
 Creating/Modifying the Database: -Remember the directory where you have direct access to manage.py-
@@ -39,10 +38,13 @@ py manage.py migrate
 
 
 Updating a Database to include a specific app:
-py manage.py makemigrations (learning_logs)
+py manage.py makemigrations learning_logs
 
 Here we are saying look at the learning_logs folder and grab any changes stuffed into models 
 Then to publish it to the database you then run the py manage.py migrate call again to commit it to the DB
+
+PLEASE NOTE. WHEN YOURE DOING ANYTHING WITH THE DB REMEMBER TO RUN THIS FOR THE APP YOU CREATED.
+NOT THE VIRTUAL ENVIRONMENT OR DJANGO OR WHATEVER.
 
 
 
@@ -70,7 +72,7 @@ py manage.py shell
 To exit a shell session hit CTRL + Z then Enter
 
 Then when we want to test something in the shell...
-from (learing_logs).models import Topic
+from learing_logs.models import Topic
 Topic.objects.all()
 
 
