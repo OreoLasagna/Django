@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Topic
+from .forms import TopicForm, EntryForm
 
 # Create your views here.
 def index(request):
@@ -17,5 +18,53 @@ def topic(request, topic_id):
     """Show a single topic and all of its entries"""
     topic = Topic.objects.get(id = topic_id)
     entries = topic.entry_set.order_by('-date_added')
+    #THE LOWERCASE ENTRY IS REFERENCING THE ENTRY CLASS IN THE MODELS.PY FILE.
+    #IF YOU WANT TO USE FOREIGN_KEYS PROPERLY AND GRAB MANY ITEMS ASSOCIATED TO A SINGLE PIZZA OR TOPIC FOR EXAMPLE
+    #YOU WOULD GO (name goes here).(LOWERCASE CLASS NAME)_set.
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
+
+def new_topic(request):
+    """Add a new topic"""
+    if request.method != 'POST':
+        #No data submitted; create a blank form
+        #When the User first hits or enters this page their browser is sending a GET request
+        #So this is triggered when first hitting the page. If the user submits a form then that is a POST request
+        form = TopicForm()
+
+    else:
+        #POST data submitted; process data
+        form = TopicForm(data = request.POST)
+        if form.is_valid():
+            form.save()
+            #The save method writes this to the DB
+            return redirect('learning_logs:topics')
+            #I think this redirect is saying use the the topics function above which calls a new HTML page to redirect you to.
+
+
+    #Display a blank or invalid form
+    context = {'form': form}
+    return render(request, 'learning_logs/new_topic.html', context)
+
+def new_entry(request, topic_id):
+    """Add a new entry for a particular topic"""
+    topic = Topic.objects.get(id=topic_id)
+    #Grabbing an individual topic
+
+    if request.method != 'POST':
+        #No data submitted; create a blank form
+        form = EntryForm()
+
+    else:
+        #POST data submitted; process data.
+        form = EntryForm(data = request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit = False)
+            new_entry.topic = topic
+            new_entry.save()
+            return redirect('learning_logs:topic', topic_id = topic_id)
+            #Telling it to call the topic function above
+
+    #Display a blank or invalid form
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_logs/new_entry.html', context)
