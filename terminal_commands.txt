@@ -73,6 +73,7 @@ Accessing the Admin Site:
 http://127.0.0.1:8000/admin/
 
 ll_admin/Test123!
+ll_practice/Test321!
 
 
 
