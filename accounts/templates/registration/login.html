@@ -1,0 +1,17 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your usernameand password didn't match. Please try again.</p>
+{% endif %}
+
+<form action="{% url 'accounts:login' %}" method='post'>
+    <!--This is saying look in the accounts folder for the login.html file-->
+    {% csrf_token %}
+    {{form.as_div}}
+
+    <button name="submit">Log in</button>
+</form>
+
+{% endblock content %}
