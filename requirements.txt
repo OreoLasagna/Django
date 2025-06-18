@@ -3,8 +3,12 @@ asgiref==3.8.1
 #Didn't have this to start
 beautifulsoup4==4.11.1
 
-Django==5.2.1
-django-bootstrap5==25.1
+#Downgrading django
+#Django==5.2.1
+#django-bootstrap5==25.1
+
+Django==4.1
+django-bootstrap5==21.3
 platformshconfig==2.4.0
 
 #Didn't have this to start
