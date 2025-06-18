@@ -1,5 +1,5 @@
 #Requirements for a remote project
 gunicorn
 
-#Changed this from psycopg2 to psycopg3 in the hopes this will push a higher version of postgresql
-psycopg3
+#Changed this from psycopg2 to psycopg3 in the hopes this will push a higher version of postgresql. Pushing it back down to 2
+psycopg2
